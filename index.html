@@ -256,6 +256,26 @@
 
 </style>
 
+<script>
+    // Function to check the password
+    function checkPassword() {
+        const passwordInput = document.getElementById('passwordInput').value;
+        const errorMessage = document.getElementById('errorMessage');
+        const blurLayer = document.getElementById('blurLayer');
+
+        // Replace 'yourpassword' with the actual password
+        const cp = '***** ';
+
+        if (passwordInput === cp) {
+            // Hide the blurLayer if the password is correct
+            blurLayer.style.display = 'none';
+        } else {
+            // Show the error message if the password is incorrect
+            errorMessage.style.display = 'block';
+        }
+    }
+</script>
+
 <script src="https://datasourceforfps.netlify.app/details.js"></script>
 
 
