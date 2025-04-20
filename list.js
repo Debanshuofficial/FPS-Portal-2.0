@@ -1,14 +1,20 @@
+//Only Update the values in the below section.
+var acount = 4;
+var bcount = 5;
+
 const students = [
+    //Category A
     {
         id: 0,
         name: "Rupon Biswas",
         class: "V-Academy",
         admissionDate: "09-MAR-2025",
         fees: [
-            { month: "March", status: "Paid", paymentDate: "11-APR-2025", notes: "" },
+            { month: "March", status: "Paid", paymentDate: "11-APR-2025", notes: "Completed" },
             { month: "April", status: "Pending", paymentDate: "", notes: "" }
         ]
     },
+    //Category B
     {
         id: 1,
         name: "Rudranee Biswas",
@@ -35,17 +41,19 @@ const students = [
             // ... remaining months
         ]
     },
+    //Category B
     {
         id: 3,
         name: "Debosmita Biswas",
         class: "VIII-BMS",
-        admissionDate: "212-MAR-2025",
+        admissionDate: "12-MAR-2025",
         fees: [
             { month: "March", status: "Paid", paymentDate: "02-APR-2025", notes: "Paid" },
             { month: "April", status: "Pending", paymentDate: "", notes: "" }
             // ... remaining months
         ]
     },
+    //Category A
     {
         id: 4,
         name: "Adrikarni Biswas",
@@ -60,3 +68,20 @@ const students = [
         ]
     }
 ];
+
+ 
+//bcount id=2, 6 in 2024
+var a = 1800;
+var b = 1500;
+//Source https://fpsportal.anvil.app/
+var c = 10300;
+
+// Calculation Reference.
+var m1 = (a*9)+(a*acount) + (b*10)+(b*bcount) + 1000 + c;
+var m2 = 7900;
+var m3 = m1 + m2;
+
+
+
+
+

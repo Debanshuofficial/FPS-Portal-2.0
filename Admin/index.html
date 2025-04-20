@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FPS Database</title>
+
+    <!-- links -->
+
+    <link rel="stylesheet" href="counter.css">
+    <script src="chkp.js"></script>
+    <script src="https://decimal-junior-relative.anvil.app/_/theme/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
 </head>
 <body>
 
@@ -256,10 +264,150 @@
 
 </style>
 
+<div class="counter-section">
+    <div class="counter-container">
+        <i class="fab fa-instagram fa-3x"></i>
+        <div class="counter counter1" data-target="0"></div>
+        <span>Value</span>
+    </div>
+    <div class="counter-container">
+        <i class="fab fa-youtube fa-3x"></i>
+        <div class="counter counter2" data-target="0"></div>
+        <span>Loss</span>
+    </div>
+    <div class="counter-container">
+        <i class="fab fa-facebook fa-3x"></i>
+        <div class="counter counter3" data-target="0"></div>
+        <span>Value + Loss</span>
+    </div>
+</div>
 
-<script src="chkp.js"></script>
-<script src="list.js"></script>
-<script src="script.js"></script>
+<script>
+
+    // Calculate value, loss and value + loss
+    var counter1 = document.querySelector('.counter1');
+    var counter2 = document.querySelector('.counter2');
+    var counter3 = document.querySelector('.counter3');
+    
+    
+    // Update the data-target attribute using dataset property
+    counter1.dataset.target = m1;
+    counter2.dataset.target = m2;
+    counter3.dataset.target = m3;
+    
+    
+
+
+    // Current selected student
+    let selectedStudent = null;
+
+    // Initialize the page
+    function initializePage() {
+        renderStudentList();
+    }
+
+    // Render the list of students
+    function renderStudentList() {
+        const studentCards = document.getElementById('studentCards');
+        studentCards.innerHTML = '';
+
+        students.forEach(student => {
+            const card = document.createElement('div');
+            card.className = 'student-card';
+            card.innerHTML = `
+                <h3>${student.name}</h3>
+                <p>Class: ${student.class}</p>
+            `;
+            card.onclick = () => showStudentDetails(student);
+            studentCards.appendChild(card);
+        });
+    }
+
+    // Show student details
+    function showStudentDetails(student) {
+        selectedStudent = student;
+        document.getElementById('studentList').style.display = 'none';
+        document.getElementById('studentDetails').style.display = 'block';
+
+        // Update student info
+        document.getElementById('detailName').textContent = student.name;
+        document.getElementById('detailClass').textContent = student.class;
+        document.getElementById('detailAdmission').textContent = student.admissionDate;
+
+        renderFeesTable();
+    }
+
+    // Show student list
+    function showStudentList() {
+        document.getElementById('studentDetails').style.display = 'none';
+        document.getElementById('studentList').style.display = 'block';
+        selectedStudent = null;
+    }
+
+    // Render fees table
+    function renderFeesTable() {
+        const tbody = document.getElementById('feesTableBody');
+        tbody.innerHTML = '';
+
+        selectedStudent.fees.forEach((fee, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${fee.month}</td>
+                <td class="status-${fee.status}">${fee.status}</td>
+                <td>${fee.paymentDate || '-'}</td>
+                <td>
+                    <input type="text" class="notes-input" value="${fee.notes}" 
+                        onchange="updateNotes(${index}, this.value)" >
+                </td>
+
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+
+    // Initialize the page when loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        initializePage();
+
+        const counters = document.querySelectorAll(".counter");
+        const counterSection = document.querySelector(".counter-section");
+
+        const startCounter = (counter) => {
+            const target = +counter.getAttribute("data-target");
+            const increment = target / 500;
+
+            const updateCounter = () => {
+                const count = +counter.innerText;
+                if (count < target) {
+                    counter.innerText = `${Math.ceil(count + increment)}`;
+                    setTimeout(updateCounter, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCounter();
+        };
+
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        counters.forEach((counter) => {
+                            counter.style.opacity = 1; // Make counters visible
+                            startCounter(counter);
+                        });
+                        observer.disconnect(); // Stop observing after animation starts
+                    }
+                });
+            },
+            { threshold: 0.5 } // Trigger when 50% of the section is visible
+        );
+
+        observer.observe(counterSection);
+    });
+</script>
 
 
 </body>
