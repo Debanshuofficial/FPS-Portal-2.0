@@ -6,8 +6,8 @@ const students = [
     //Category A
     {
         id: 0,
-        name: "Rupon Biswas",
-        class: "V-Academy",
+        name: "Ananya Dutta",
+        class: "VI-Greenwood",
         admissionDate: "09-MAR-2025",
         fees: [
             { month: "March", status: "Paid", paymentDate: "11-APR-2025", notes: "Completed" },
@@ -17,8 +17,8 @@ const students = [
     //Category B
     {
         id: 1,
-        name: "Rudranee Biswas",
-        class: "V-Don-Bosco",
+        name: "Sayan Mitra",
+        class: "V-Loreto",
         admissionDate: "03-AUG-2024",
         fees: [
             { month: "January", status: "Paid", paymentDate: "01-FEB-2025", notes: "Paid in full" },
@@ -30,8 +30,8 @@ const students = [
     },
     {
         id: 2,
-        name: "Oishi Pal Choudhury",
-        class: "VIII-BMS",
+        name: "Ishani Sen",
+        class: "VIII-LMHS",
         admissionDate: "02-AUG-2024",
         fees: [
             { month: "January", status: "Paid", paymentDate: "08-FEB-2025", notes: "Paid in full" },
@@ -44,8 +44,8 @@ const students = [
     //Category B
     {
         id: 3,
-        name: "Debosmita Biswas",
-        class: "VIII-BMS",
+        name: "Trisha Ghosh",
+        class: "VIII-LMHS",
         admissionDate: "12-MAR-2025",
         fees: [
             { month: "March", status: "Paid", paymentDate: "02-APR-2025", notes: "Paid" },
@@ -56,8 +56,8 @@ const students = [
     //Category A
     {
         id: 4,
-        name: "Adrikarni Biswas",
-        class: "IX-BMS",
+        name: "Pratyush Nandy",
+        class: "IX-LMHS",
         admissionDate: "01-APR-2024",
         fees: [
             { month: "January", status: "Paid", paymentDate: "01-FEB-2025", notes: "Paid -800" },
@@ -80,8 +80,3 @@ var c = 10300;
 var m1 = (a*9)+(a*acount) + (b*10)+(b*bcount) + 1000 + c;
 var m2 = 7900;
 var m3 = m1 + m2;
-
-
-
-
-
